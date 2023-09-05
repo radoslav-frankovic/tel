@@ -1,6 +1,9 @@
 <div class="timy-div">
     <div class="table-div" (click)="viditelneDni()"></div>
-    <div *ngFor="let t of timyViditelne" class="table-div" (click)="timClick( t )">{{t.kod}}</div>
+    <div *ngFor="let t of timyViditelne" class="table-div" (click)="timClick( t )">
+        <img *ngIf="loga" [src]="'assets/logos/'+t.logo" />
+        <div *ngIf="!loga">{{t.kod}}</div>
+    </div>
 </div>
 <div class="dni-div">
     <div *ngFor="let d of dniViditelne" class="den-div">

@@ -21,13 +21,15 @@ export class ZapasComponent implements OnInit {
     @Input() den: Date;
     @Input() tim: Tim;
     vs: Tim;
+    doma: boolean;
     
     zapas: Zapas;
 
     ngOnInit(): void {
         this.zapas = zapasy.find( z => moment( this.den ).format( 'DD.MM.YYYY' ) == moment( z.datCas ).format( 'DD.MM.YYYY' ) && ( this.tim.kod == z.timDom || this.tim.kod == z.timVon ) );
         if ( this.zapas ) {
-            this.vs = timy.find( t => t.kod == ( this.zapas.timDom == this.tim.kod ? this.zapas.timVon : this.zapas.timDom ) );
+            this.doma = this.zapas.timDom == this.tim.kod;
+            this.vs = timy.find( t => t.kod == ( this.doma ? this.zapas.timVon : this.zapas.timDom ) );
         }
     }
 
