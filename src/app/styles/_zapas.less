@@ -2,11 +2,26 @@ zapas {
 
     display: flex;
     flex-flow: column;
-
-    div {
+    width: 100%;
+    
+    .zapas-div {
+        background-size: 50px 50px;
         display: flex;
+        flex-flow: column;
         justify-content: center;
         align-items: center;
+
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 2;
+        }
+
+        img {
+            max-width: 50px;
+            max-height: 50px;
+        }
     }
 
 }

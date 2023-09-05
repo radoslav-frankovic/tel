@@ -13,6 +13,8 @@ import { Zapas } from 'src/app/api/Zapas';
 })
 export class KalendarComponent implements OnInit {
 
+    loga: boolean = true;
+
     timy: Tim[];
     zapasy: Zapas[];
     dni: Date[] = [];
@@ -46,7 +48,7 @@ export class KalendarComponent implements OnInit {
     }
 
     formatDatum( d: Date ): string {
-        return moment( d ).format( 'DD.MM.YYYY' );
+        return moment( d ).format( 'DD.MM.' );
     }
 
     denVTyzdni( d: Date ): string {

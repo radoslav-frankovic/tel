@@ -1,2 +1,9 @@
-<div>{{vs}}</div>
-<div>{{vs ? formatCas( zapas.datCas ) : ''}}</div>
+<div class="zapas-div">
+    <ng-container *ngIf="!logo">
+        <div>{{vs?.kod}}</div>
+        <div>{{vs ? formatCas( zapas.datCas ) : ''}}</div>
+    </ng-container>
+    <ng-container *ngIf="logo && vs">
+        <img [src]="'assets/logos/'+vs?.logo" />
+    </ng-container>
+</div>

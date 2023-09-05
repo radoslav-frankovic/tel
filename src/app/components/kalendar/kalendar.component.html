@@ -4,12 +4,12 @@
 </div>
 <div class="dni-div">
     <div *ngFor="let d of dniViditelne" class="den-div">
-        <div class="table-div">
+        <div class="table-div" (click)="loga = !loga">
             <div>{{formatDatum( d )}}</div>
             <div>{{denVTyzdni( d )}}</div>
         </div>
         <div *ngFor="let t of timyViditelne" class="table-div">
-            <zapas [den]="d" [tim]="t"></zapas>
+            <zapas [den]="d" [tim]="t" [logo]="loga"></zapas>
         </div>
     </div>
 </div>
