@@ -33,7 +33,6 @@ export class KalendarComponent implements OnInit {
         this.timy = timy;
         this.zapasy = zapasy;
         this.timyViditelne = [ ...timy ];
-        this.dniViditelne = [ ...this.dni ];
 
         this.zaciatok = moment( '2023-09-11' ).toDate();
         this.koniec = moment( '2024-05-31' ).toDate();
@@ -43,6 +42,7 @@ export class KalendarComponent implements OnInit {
             this.dni.push( d );
             d = moment( d ).add( 1, 'days' ).toDate();
         }
+        this.dniViditelne = [ ...this.dni ];
     }
 
     formatDatum( d: Date ): string {
