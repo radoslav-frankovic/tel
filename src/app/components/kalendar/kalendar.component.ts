@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import moment from 'moment';
 
@@ -11,7 +11,9 @@ import { Zapas } from 'src/app/api/Zapas';
     selector: 'kalendar',
     templateUrl: './kalendar.component.html'
 })
-export class KalendarComponent implements OnInit {
+export class KalendarComponent implements OnInit, AfterViewInit {
+
+    @ViewChild( 'dniDiv' ) dniDiv: ElementRef;
 
     loga: boolean = true;
 
@@ -45,6 +47,11 @@ export class KalendarComponent implements OnInit {
             d = moment( d ).add( 1, 'days' ).toDate();
         }
         this.dniViditelne = [ ...this.dni ];
+    }
+    
+    ngAfterViewInit(): void {
+        let rozdielVDnoch: number = moment().weekday(0).diff( moment( this.zaciatok ), 'day' );
+        this.dniDiv.nativeElement.scrollTo( rozdielVDnoch*50, 0 );
     }
 
     formatDatum( d: Date ): string {

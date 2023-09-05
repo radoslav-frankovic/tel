@@ -5,7 +5,7 @@
         <div *ngIf="!loga">{{t.kod}}</div>
     </div>
 </div>
-<div class="dni-div">
+<div #dniDiv class="dni-div">
     <div *ngFor="let d of dniViditelne" class="den-div">
         <div class="table-div" (click)="loga = !loga" [style.backgroundColor]="denVTyzdni( d ) == 'ne' ? '#213892' : 'transparent'">
             <div>{{formatDatum( d )}}</div>
