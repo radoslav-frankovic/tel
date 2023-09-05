@@ -7,7 +7,7 @@
 </div>
 <div class="dni-div">
     <div *ngFor="let d of dniViditelne" class="den-div">
-        <div class="table-div" (click)="loga = !loga">
+        <div class="table-div" (click)="loga = !loga" [style.backgroundColor]="denVTyzdni( d ) == 'ne' ? '#213892' : 'transparent'">
             <div>{{formatDatum( d )}}</div>
             <div>{{denVTyzdni( d )}}</div>
         </div>
