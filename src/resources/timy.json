@@ -1,0 +1,14 @@
+[
+    { "kod": "BBS", "nazov": "HC '05 Banská Bystrica" },
+    { "kod": "HCH", "nazov": "HC 19 Humenné" },
+    { "kod": "KOS", "nazov": "HC Košice" },
+    { "kod": "NZO", "nazov": "HC MIKRON Nové Zámky" },
+    { "kod": "SBA", "nazov": "HC SLOVAN Bratislava" },
+    { "kod": "HKN", "nazov": "HK Nitra" },
+    { "kod": "RYS", "nazov": "HK Spišská Nová Ves" },
+    { "kod": "ZVA", "nazov": "HKM Zvolen" },
+    { "kod": "POA", "nazov": "HK Poprad" },
+    { "kod": "MII", "nazov": "HK Dukla Ingema Michalovce" },
+    { "kod": "TRE", "nazov": "HK DUKLA Trenčín" },
+    { "kod": "LMI", "nazov": "MHk 32 Liptovský Mikuláš" }
+]

@@ -1,0 +1,8 @@
+[
+    { "timDom": "KOS", "timVon": "HCH", "datCas": "2023-09-15T17:30:00.000+0200" },
+    { "timDom": "BBS", "timVon": "TRE", "datCas": "2023-09-15T17:30:00.000+0200" },
+    { "timDom": "HKN", "timVon": "POA", "datCas": "2023-09-15T18:00:00.000+0200" },
+    { "timDom": "NZO", "timVon": "RYS", "datCas": "2023-09-15T18:00:00.000+0200" },
+    { "timDom": "LMI", "timVon": "ZVA", "datCas": "2023-09-15T17:00:00.000+0200" },
+    { "timDom": "SBA", "timVon": "MII", "datCas": "2023-09-15T17:00:00.000+0200" }
+]
