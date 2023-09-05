@@ -4,15 +4,23 @@ kalendar {
     height: 100%;
     flex-flow: row;
     background-color: #0f1c50;
+    overflow-x: hidden;
 
     .timy-div {
         display: flex;
         flex-flow: column;
+        width: 100px;
     }
 
     .den-div {
         display: flex;
         flex-flow: column;
+    }
+
+    .dni-div {
+        flex: 1;
+        display: flex;
+        overflow-x: scroll;
     }
 
     .table-div {
