@@ -1,7 +1,8 @@
 <div class="zapas-div" [style.backgroundColor]="doma ? '#213892' : 'transparent'">
     <ng-container *ngIf="!logo">
         <div>{{vs?.kod}}</div>
-        <div>{{vs ? formatCas( zapas.datCas ) : ''}}</div>
+        <div *ngIf="!zapas?.vysledok">{{vs ? formatCas( zapas.datCas ) : ''}}</div>
+        <div *ngIf="!!zapas?.vysledok">{{doma ? zapas.vysledok : zapas.vysledok.split(':')[1]+':'+zapas.vysledok.split(':')[0]}}{{zapas.priznak ?? ''}}</div>
     </ng-container>
     <ng-container *ngIf="logo && vs">
         <img [src]="'assets/logos/'+vs?.logo" />
