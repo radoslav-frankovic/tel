@@ -15,7 +15,7 @@ export class AppService {
 
     domaceZapasy: boolean = true;
     vonkuZapasy: boolean = true;
-    loga: boolean = false;
+    loga: boolean = true;
     hracieDni: boolean = false;
 
     constructor() {
