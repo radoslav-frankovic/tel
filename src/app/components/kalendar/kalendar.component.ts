@@ -1,11 +1,9 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-
 import moment from 'moment';
 
-import timy from '../../../resources/timy.json';
-import zapasy from '../../../resources/zapasy.json';
 import { Tim } from 'src/app/api/Tim';
 import { Zapas } from 'src/app/api/Zapas';
+import { AppService } from 'src/app/services/app.service';
 
 @Component({
     selector: 'kalendar',
@@ -15,28 +13,23 @@ export class KalendarComponent implements OnInit, AfterViewInit {
 
     @ViewChild( 'dniDiv' ) dniDiv: ElementRef;
 
-    loga: boolean = true;
-
-    timy: Tim[];
-    zapasy: Zapas[];
     dni: Date[] = [];
     tim: Tim;
 
-    vsetkyDni: boolean = true;
     dniViditelne: Date[];
     timyViditelne: Tim[];
 
     zaciatok: Date;
     koniec: Date;
 
-    constructor() {
+    najblizsiHraciDen: Date;
+
+    constructor( public appService: AppService ) {
         moment.locale( 'sk' );
     }
 
     ngOnInit(): void {
-        this.timy = timy;
-        this.zapasy = zapasy;
-        this.timyViditelne = [ ...timy ];
+        this.timyViditelne = [ ...this.appService.timy ];
 
         this.zaciatok = moment( '2023-09-11' ).toDate();
         this.koniec = moment( '2024-05-31' ).toDate();
@@ -52,6 +45,7 @@ export class KalendarComponent implements OnInit, AfterViewInit {
     ngAfterViewInit(): void {
         let rozdielVDnoch: number = moment().weekday(0).diff( moment( this.zaciatok ), 'day' );
         this.dniDiv.nativeElement.scrollTo( rozdielVDnoch*50, 0 );
+        this.scroll();
     }
 
     formatDatum( d: Date ): string {
@@ -66,24 +60,43 @@ export class KalendarComponent implements OnInit, AfterViewInit {
         return moment( d ).format( 'HH:mm' );
     }
 
-    viditelneDni(): void {
-        if ( this.vsetkyDni ) {
-            this.dniViditelne = this.dni.filter( d => this.zapasy.some( z => moment( z.datCas ).format( 'DD.MM.YYYY' ) == moment( d ).format( 'DD.MM.YYYY' ) ) );
-            this.vsetkyDni = false;
+    viditelneDni( $event: boolean ): void {
+        this.appService.hracieDni = $event;
+        if ( this.appService.hracieDni ) {
+            this.dniViditelne = this.dni.filter( d => this.appService.zapasy.some( z => moment( z.datCas ).format( 'DD.MM.YYYY' ) == moment( d ).format( 'DD.MM.YYYY' ) ) );
         } else {
             this.dniViditelne = [ ...this.dni ];
-            this.vsetkyDni = true;
         }
     }
 
     timClick( t: Tim ): void {
         if ( this.tim && t.kod == this.tim.kod ) {
             this.tim = undefined;
-            this.timyViditelne = [ ...this.timy ];
+            this.timyViditelne = [ ...this.appService.timy ];
         } else {
             this.tim = t;
-            this.timyViditelne = this.timy.filter( tim => tim.kod == t.kod );
+            this.timyViditelne = this.appService.timy.filter( tim => tim.kod == t.kod );
         }
+    }
+
+    scroll(): void {
+        let ix: number = Math.floor( this.dniDiv.nativeElement.scrollLeft / 50 );
+        this.najblizsiHraciDen = this.dniViditelne[ ix ];
+        while ( !this.appService.zapasy.some( z => moment( z.datCas ).format( 'DD.MM.YYY' ) == moment( this.najblizsiHraciDen ).format( 'DD.MM.YYY' ) ) ) {
+            ix++;
+            if ( ix == this.dniViditelne.length ) {
+                this.najblizsiHraciDen = undefined;
+                break;
+            }
+            this.najblizsiHraciDen = this.dniViditelne[ ix ];
+        }
+    }
+
+    hraTimNajblizsiHraciDen( tim: Tim ): boolean {
+        if ( !!this.tim || !this.najblizsiHraciDen || ( this.appService.domaceZapasy && this.appService.vonkuZapasy ) || ( !this.appService.domaceZapasy && !this.appService.vonkuZapasy ) )
+            return true;
+        let najblizsiZapas: Zapas = this.appService.zapasy.find( z => moment( z.datCas ).format( 'DD.MM.YYY' ) == moment( this.najblizsiHraciDen ).format( 'DD.MM.YYY' ) && ( tim.kod == z.timDom || tim.kod == z.timVon ) );
+        return !!najblizsiZapas && this.appService.domaceZapasy && tim.kod == najblizsiZapas.timDom || this.appService.vonkuZapasy && tim.kod == najblizsiZapas.timVon;
     }
 
 }

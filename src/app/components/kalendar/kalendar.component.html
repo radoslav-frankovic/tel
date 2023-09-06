@@ -1,18 +1,29 @@
-<div class="timy-div">
-    <div class="table-div" (click)="viditelneDni()"></div>
-    <div *ngFor="let t of timyViditelne" class="table-div" (click)="timClick( t )">
-        <img *ngIf="loga" [src]="'assets/logos/'+t.logo" />
-        <div *ngIf="!loga">{{t.kod}}</div>
-    </div>
+<div style="color: #ffffff; padding: 10px;">
+    <nz-switch style="margin-right: 10px;" [(ngModel)]="appService.domaceZapasy" nzCheckedChildren="Doma" nzUnCheckedChildren="Doma"></nz-switch>
+    <nz-switch style="margin-right: 10px;" [(ngModel)]="appService.vonkuZapasy" nzCheckedChildren="Vonku" nzUnCheckedChildren="Vonku"></nz-switch>
+    <nz-switch style="margin-right: 10px;" [(ngModel)]="appService.loga" nzCheckedChildren="Loga" nzUnCheckedChildren="Loga"></nz-switch>
+    <nz-switch style="margin-right: 10px;" [ngModel]="appService.hracieDni" (ngModelChange)="viditelneDni($event)" nzCheckedChildren="Hracie dni" nzUnCheckedChildren="Hracie dni"></nz-switch>
 </div>
-<div #dniDiv class="dni-div">
-    <div *ngFor="let d of dniViditelne" class="den-div">
-        <div class="table-div" (click)="loga = !loga" [style.backgroundColor]="denVTyzdni( d ) == 'ne' ? '#213892' : 'transparent'">
-            <div>{{formatDatum( d )}}</div>
-            <div>{{denVTyzdni( d )}}</div>
+<div style="display: flex;">
+    <div class="timy-div">
+        <div class="table-div"></div>
+        <div *ngFor="let t of timyViditelne" class="table-div" (click)="timClick( t )">
+        <!-- <div *ngFor="let t of timyViditelne" class="table-div"> -->
+            <ng-container *ngIf="hraTimNajblizsiHraciDen(t)">
+                <img *ngIf="appService.loga" [src]="'assets/logos/'+t.logo" />
+                <div *ngIf="!appService.loga">{{t.kod}}</div>
+            </ng-container>
         </div>
-        <div *ngFor="let t of timyViditelne" class="table-div">
-            <zapas [den]="d" [tim]="t" [logo]="loga"></zapas>
+    </div>
+    <div #dniDiv class="dni-div" (scroll)="scroll()">
+        <div *ngFor="let d of dniViditelne" class="den-div">
+            <div class="table-div" (click)="appService.loga = !appService.loga" [style.backgroundColor]="denVTyzdni( d ) == 'ne' ? '#213892' : 'transparent'">
+                <div>{{formatDatum( d )}}</div>
+                <div>{{denVTyzdni( d )}}</div>
+            </div>
+            <div *ngFor="let t of timyViditelne" class="table-div">
+                <zapas [den]="d" [tim]="t" [logo]="appService.loga"></zapas>
+            </div>
         </div>
     </div>
 </div>

@@ -1,10 +1,10 @@
-<div class="zapas-div" [style.backgroundColor]="doma ? '#213892' : 'transparent'">
-    <ng-container *ngIf="!logo">
+<div class="zapas-div" [style.backgroundColor]="doma && appService.domaceZapasy ? '#213892' : 'transparent'">
+    <ng-container *ngIf="!logo && ((doma && appService.domaceZapasy) || (!doma && appService.vonkuZapasy))">
         <div>{{vs?.kod}}</div>
         <div *ngIf="!zapas?.vysledok">{{vs ? formatCas( zapas.datCas ) : ''}}</div>
         <div *ngIf="!!zapas?.vysledok">{{doma ? zapas.vysledok : zapas.vysledok.split(':')[1]+':'+zapas.vysledok.split(':')[0]}}{{zapas.priznak ?? ''}}</div>
     </ng-container>
-    <ng-container *ngIf="logo && vs">
+    <ng-container *ngIf="logo && vs && ((doma && appService.domaceZapasy) || (!doma && appService.vonkuZapasy))">
         <img [src]="'assets/logos/'+vs?.logo" />
     </ng-container>
 </div>

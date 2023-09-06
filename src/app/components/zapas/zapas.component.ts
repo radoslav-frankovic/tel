@@ -1,11 +1,10 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { AfterViewChecked, Component, Input, OnInit } from "@angular/core";
 import { Zapas } from "src/app/api/Zapas";
 
 import moment from 'moment';
 
-import zapasy from '../../../resources/zapasy.json';
-import timy from '../../../resources/timy.json';
 import { Tim } from "src/app/api/Tim";
+import { AppService } from "src/app/services/app.service";
 
 @Component({
     selector: 'zapas',
@@ -25,11 +24,13 @@ export class ZapasComponent implements OnInit {
     
     zapas: Zapas;
 
+    constructor( public appService: AppService ) {}
+
     ngOnInit(): void {
-        this.zapas = zapasy.find( z => moment( this.den ).format( 'DD.MM.YYYY' ) == moment( z.datCas ).format( 'DD.MM.YYYY' ) && ( this.tim.kod == z.timDom || this.tim.kod == z.timVon ) );
+        this.zapas = this.appService.zapasy.find( z => moment( this.den ).format( 'DD.MM.YYYY' ) == moment( z.datCas ).format( 'DD.MM.YYYY' ) && ( ( this.tim.kod == z.timDom && this.appService.domaceZapasy ) || ( this.tim.kod == z.timVon && this.appService.vonkuZapasy ) ) );
         if ( this.zapas ) {
             this.doma = this.zapas.timDom == this.tim.kod;
-            this.vs = timy.find( t => t.kod == ( this.doma ? this.zapas.timVon : this.zapas.timDom ) );
+            this.vs = this.appService.timy.find( t => t.kod == ( this.doma ? this.zapas.timVon : this.zapas.timDom ) );
         }
     }
 
