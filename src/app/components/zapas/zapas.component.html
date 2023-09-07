@@ -5,6 +5,6 @@
         <div *ngIf="!!zapas?.vysledok">{{doma ? zapas.vysledok : zapas.vysledok.split(':')[1]+':'+zapas.vysledok.split(':')[0]}}{{zapas.priznak ?? ''}}</div>
     </ng-container>
     <ng-container *ngIf="logo && vs && ((doma && appService.domaceZapasy) || (!doma && appService.vonkuZapasy))">
-        <img [src]="'assets/logos/'+vs?.logo" />
+        <img [alt]="vs?.nazov" [src]="'assets/logos/'+vs?.logo" />
     </ng-container>
 </div>
