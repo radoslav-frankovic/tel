@@ -27,7 +27,8 @@ export class ZapasComponent implements OnInit {
     constructor( public appService: AppService ) {}
 
     ngOnInit(): void {
-        this.zapas = this.appService.zapasy.find( z => moment( this.den ).format( 'DD.MM.YYYY' ) == moment( z.datCas ).format( 'DD.MM.YYYY' ) && ( ( this.tim.kod == z.timDom && this.appService.domaceZapasy ) || ( this.tim.kod == z.timVon && this.appService.vonkuZapasy ) ) );
+        // this.zapas = this.appService.zapasy.find( z => moment( this.den ).format( 'DD.MM.YYYY' ) == moment( z.datCas ).format( 'DD.MM.YYYY' ) && ( ( this.tim.kod == z.timDom && this.appService.domaceZapasy ) || ( this.tim.kod == z.timVon && this.appService.vonkuZapasy ) ) );
+        this.zapas = this.appService.mapaZapasy.get( moment( this.den ).format( 'DD.MM.YYYY' ) )?.get( this.tim.kod );
         if ( this.zapas ) {
             this.doma = this.zapas.timDom == this.tim.kod;
             this.vs = this.appService.timy.find( t => t.kod == ( this.doma ? this.zapas.timVon : this.zapas.timDom ) );

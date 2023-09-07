@@ -63,10 +63,10 @@ export class KalendarComponent implements OnInit, AfterViewInit {
 
     viditelneDni( $event?: boolean ): void {
         if ( $event !== undefined ) {
-            this.appService.hracieDni = $event;
+            this.appService.ibaHracieDni = $event;
         }
-        if ( this.appService.hracieDni ) {
-            this.dniViditelne = this.dni.filter( d => this.appService.zapasy.some( z => moment( z.datCas ).format( 'DD.MM.YYYY' ) == moment( d ).format( 'DD.MM.YYYY' ) ) );
+        if ( this.appService.ibaHracieDni ) {
+            this.dniViditelne = [ ...this.appService.hracieDni ];
         } else {
             this.dniViditelne = [ ...this.dni ];
         }
@@ -98,7 +98,8 @@ export class KalendarComponent implements OnInit, AfterViewInit {
     hraTimNajblizsiHraciDen( tim: Tim ): boolean {
         if ( !!this.tim || !this.najblizsiHraciDen || ( this.appService.domaceZapasy && this.appService.vonkuZapasy ) || ( !this.appService.domaceZapasy && !this.appService.vonkuZapasy ) )
             return true;
-        let najblizsiZapas: Zapas = this.appService.zapasy.find( z => moment( z.datCas ).format( 'DD.MM.YYY' ) == moment( this.najblizsiHraciDen ).format( 'DD.MM.YYY' ) && ( tim.kod == z.timDom || tim.kod == z.timVon ) );
+        // let najblizsiZapas: Zapas = this.appService.zapasy.find( z => moment( z.datCas ).format( 'DD.MM.YYY' ) == moment( this.najblizsiHraciDen ).format( 'DD.MM.YYY' ) && ( tim.kod == z.timDom || tim.kod == z.timVon ) );
+        let najblizsiZapas: Zapas = this.appService.mapaZapasy.get( moment( this.najblizsiHraciDen ).format( 'DD.MM.YYYY' ) )?.get( tim.kod );
         return !!najblizsiZapas && this.appService.domaceZapasy && tim.kod == najblizsiZapas.timDom || this.appService.vonkuZapasy && tim.kod == najblizsiZapas.timVon;
     }
 
