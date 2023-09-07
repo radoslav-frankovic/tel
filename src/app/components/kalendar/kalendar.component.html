@@ -9,7 +9,7 @@
         <div class="table-div"></div>
         <div *ngFor="let t of timyViditelne" class="table-div" (click)="timClick( t )">
             <ng-container *ngIf="hraTimNajblizsiHraciDen(t)">
-                <img *ngIf="appService.loga" [alt]="t?.nazov" [src]="'assets/logos/'+t.logo" />
+                <img *ngIf="appService.loga" [alt]="t?.nazov" width="50" height="50" [src]="'assets/logos/'+t.logo" />
                 <div *ngIf="!appService.loga">{{t.kod}}</div>
             </ng-container>
         </div>
