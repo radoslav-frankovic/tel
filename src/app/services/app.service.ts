@@ -16,7 +16,7 @@ export class AppService {
     domaceZapasy: boolean = true;
     vonkuZapasy: boolean = true;
     loga: boolean = true;
-    hracieDni: boolean = false;
+    hracieDni: boolean = true;
 
     constructor() {
         this.timy = timy;

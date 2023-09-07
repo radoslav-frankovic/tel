@@ -39,7 +39,8 @@ export class KalendarComponent implements OnInit, AfterViewInit {
             this.dni.push( d );
             d = moment( d ).add( 1, 'days' ).toDate();
         }
-        this.dniViditelne = [ ...this.dni ];
+        // this.dniViditelne = [ ...this.dni ];
+        this.viditelneDni();
     }
     
     ngAfterViewInit(): void {
@@ -60,8 +61,10 @@ export class KalendarComponent implements OnInit, AfterViewInit {
         return moment( d ).format( 'HH:mm' );
     }
 
-    viditelneDni( $event: boolean ): void {
-        this.appService.hracieDni = $event;
+    viditelneDni( $event?: boolean ): void {
+        if ( $event !== undefined ) {
+            this.appService.hracieDni = $event;
+        }
         if ( this.appService.hracieDni ) {
             this.dniViditelne = this.dni.filter( d => this.appService.zapasy.some( z => moment( z.datCas ).format( 'DD.MM.YYYY' ) == moment( d ).format( 'DD.MM.YYYY' ) ) );
         } else {
