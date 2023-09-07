@@ -39,7 +39,6 @@ export class KalendarComponent implements OnInit, AfterViewInit {
             this.dni.push( d );
             d = moment( d ).add( 1, 'days' ).toDate();
         }
-        // this.dniViditelne = [ ...this.dni ];
         this.viditelneDni();
     }
     
@@ -98,7 +97,6 @@ export class KalendarComponent implements OnInit, AfterViewInit {
     hraTimNajblizsiHraciDen( tim: Tim ): boolean {
         if ( !!this.tim || !this.najblizsiHraciDen || ( this.appService.domaceZapasy && this.appService.vonkuZapasy ) || ( !this.appService.domaceZapasy && !this.appService.vonkuZapasy ) )
             return true;
-        // let najblizsiZapas: Zapas = this.appService.zapasy.find( z => moment( z.datCas ).format( 'DD.MM.YYY' ) == moment( this.najblizsiHraciDen ).format( 'DD.MM.YYY' ) && ( tim.kod == z.timDom || tim.kod == z.timVon ) );
         let najblizsiZapas: Zapas = this.appService.mapaZapasy.get( moment( this.najblizsiHraciDen ).format( 'DD.MM.YYYY' ) )?.get( tim.kod );
         return !!najblizsiZapas && this.appService.domaceZapasy && tim.kod == najblizsiZapas.timDom || this.appService.vonkuZapasy && tim.kod == najblizsiZapas.timVon;
     }

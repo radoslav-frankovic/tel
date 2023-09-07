@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { Zapas } from "src/app/api/Zapas";
 
 import moment from 'moment';
@@ -27,7 +27,6 @@ export class ZapasComponent implements OnInit {
     constructor( public appService: AppService ) {}
 
     ngOnInit(): void {
-        // this.zapas = this.appService.zapasy.find( z => moment( this.den ).format( 'DD.MM.YYYY' ) == moment( z.datCas ).format( 'DD.MM.YYYY' ) && ( ( this.tim.kod == z.timDom && this.appService.domaceZapasy ) || ( this.tim.kod == z.timVon && this.appService.vonkuZapasy ) ) );
         this.zapas = this.appService.mapaZapasy.get( moment( this.den ).format( 'DD.MM.YYYY' ) )?.get( this.tim.kod );
         if ( this.zapas ) {
             this.doma = this.zapas.timDom == this.tim.kod;
@@ -42,12 +41,5 @@ export class ZapasComponent implements OnInit {
     formatCas( d: Date | string ): string {
         return moment( d ).format( 'HH:mm' );
     }
-
-    // logo(): string {
-    //     if ( this.vs?.logo ) {
-    //         console.log( this.vs?.logo );
-    //     }
-    //     return `url('assets/logos/${this.vs?.logo}')`;
-    // }
 
 }

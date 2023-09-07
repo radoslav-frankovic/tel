@@ -8,7 +8,6 @@
     <div class="timy-div">
         <div class="table-div"></div>
         <div *ngFor="let t of timyViditelne" class="table-div" (click)="timClick( t )">
-        <!-- <div *ngFor="let t of timyViditelne" class="table-div"> -->
             <ng-container *ngIf="hraTimNajblizsiHraciDen(t)">
                 <img *ngIf="appService.loga" [alt]="t?.nazov" [src]="'assets/logos/'+t.logo" />
                 <div *ngIf="!appService.loga">{{t.kod}}</div>
