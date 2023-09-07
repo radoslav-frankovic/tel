@@ -50,7 +50,7 @@
                 }
               ],
               "outputHashing": "all",
-              "vendorChunk": false
+              "vendorChunk": true
             },
             "development": {
               "buildOptimizer": false,
