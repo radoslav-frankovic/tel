@@ -1,11 +1,11 @@
 [
     { "kod": "BBS", "logo": "BBS.svg", "nazov": "HC '05 Banská Bystrica" },
-    { "kod": "HCH", "logo": "HCH.png", "nazov": "HC 19 Humenné" },
+    { "kod": "HCH", "logo": "HCH.webp", "nazov": "HC 19 Humenné" },
     { "kod": "KOS", "logo": "KOS.svg", "nazov": "HC Košice" },
     { "kod": "NZO", "logo": "NZO.svg", "nazov": "HC MIKRON Nové Zámky" },
     { "kod": "SBA", "logo": "SBA.svg", "nazov": "HC SLOVAN Bratislava" },
     { "kod": "HKN", "logo": "HKN.svg", "nazov": "HK Nitra" },
-    { "kod": "RYS", "logo": "RYS.png", "nazov": "HK Spišská Nová Ves" },
+    { "kod": "RYS", "logo": "RYS.webp", "nazov": "HK Spišská Nová Ves" },
     { "kod": "ZVA", "logo": "ZVA.svg", "nazov": "HKM Zvolen" },
     { "kod": "POA", "logo": "POA.svg", "nazov": "HK Poprad" },
     { "kod": "MII", "logo": "MII.svg", "nazov": "HK Dukla Ingema Michalovce" },
