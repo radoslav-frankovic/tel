@@ -31,8 +31,8 @@ export class KalendarComponent implements OnInit, AfterViewInit {
     ngOnInit(): void {
         this.timyViditelne = [ ...this.appService.timy ];
 
-        this.zaciatok = moment( '2023-09-11' ).toDate();
-        this.koniec = moment( '2024-05-31' ).toDate();
+        this.zaciatok = moment( '2024-09-11' ).toDate();
+        this.koniec = moment( '2025-05-31' ).toDate();
 
         let d: Date = this.zaciatok;
         while ( !moment( d ).isAfter( this.koniec ) ) {
