@@ -1,14 +1,14 @@
 [
-    { "kod": "BBS", "logo": "BBS.svg", "nazov": "HC MONACObet Banská Bystrica" },
-    { "kod": "ZIL", "logo": "ZIL.webp", "nazov": "Vlci Žilina" },
-    { "kod": "KOS", "logo": "KOS.svg", "nazov": "HC Košice" },
-    { "kod": "NZO", "logo": "NZO.svg", "nazov": "HC Nové Zámky" },
-    { "kod": "SBA", "logo": "SBA.svg", "nazov": "HC SLOVAN Bratislava" },
-    { "kod": "HKN", "logo": "HKN.svg", "nazov": "HK Nitra" },
     { "kod": "RYS", "logo": "RYS.webp", "nazov": "HK Spišská Nová Ves" },
-    { "kod": "ZVA", "logo": "ZVA.svg", "nazov": "HKM Zvolen" },
-    { "kod": "POA", "logo": "POA.svg", "nazov": "HK Poprad" },
+    { "kod": "KOS", "logo": "KOS.svg", "nazov": "HC Košice" },
+    { "kod": "SBA", "logo": "SBA.svg", "nazov": "HC SLOVAN Bratislava" },
     { "kod": "MII", "logo": "MII.svg", "nazov": "HK Dukla Ingema Michalovce" },
+    { "kod": "NZO", "logo": "NZO.svg", "nazov": "HC Nové Zámky" },
     { "kod": "TRE", "logo": "TRE.svg", "nazov": "HK DUKLA Trenčín" },
-    { "kod": "LMI", "logo": "LMI.svg", "nazov": "MHk 32 Liptovský Mikuláš" }
+    { "kod": "ZIL", "logo": "ZIL.webp", "nazov": "Vlci Žilina" },
+    { "kod": "POA", "logo": "POA.svg", "nazov": "HK Poprad" },
+    { "kod": "ZVA", "logo": "ZVA.svg", "nazov": "HKM Zvolen" },
+    { "kod": "LMI", "logo": "LMI.svg", "nazov": "MHk 32 Liptovský Mikuláš" },
+    { "kod": "HKN", "logo": "HKN.svg", "nazov": "HK Nitra" },
+    { "kod": "BBS", "logo": "BBS.svg", "nazov": "HC MONACObet Banská Bystrica" }
 ]
