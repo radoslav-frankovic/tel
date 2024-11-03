@@ -115,7 +115,7 @@
     { "timDom": "ZIL", "datCas": "2024-11-17T17:00:00.000+0100", "timVon": "TRE"},
     { "timDom": "ZVA", "datCas": "2024-11-19T17:30:00.000+0100", "timVon": "BBS"},
     { "timDom": "MII", "datCas": "2024-11-19T17:30:00.000+0100", "timVon": "LMI"},
-    { "timDom": "RYS", "datCas": "2024-11-19T17:30:00.000+0100", "timVon": "KOS"},
+    { "timDom": "KOS", "datCas": "2024-11-19T17:30:00.000+0100", "timVon": "RYS"},
     { "timDom": "SBA", "datCas": "2024-11-19T18:00:00.000+0100", "timVon": "HKN"},
     { "timDom": "NZO", "datCas": "2024-11-19T18:00:00.000+0100", "timVon": "ZIL"},
     { "timDom": "TRE", "datCas": "2024-11-19T18:00:00.000+0100", "timVon": "POA"},
